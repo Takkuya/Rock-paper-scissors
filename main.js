@@ -6,34 +6,53 @@ function generateRandomNumber() {
   return (randomNumber = Math.floor(Math.random() * 3))
 }
 
+let result = ''
 function computerPlay() {
+  console.log(randomNumber)
   if (randomNumber === 0) {
-    return (randomNumber = 'rock')
+    return (result = 'rock')
   } else if (randomNumber === 1) {
-    return (randomNumber = 'scissors')
+    return (result = 'scissors')
+  } else if (randomNumber === 2) {
+    return (result = 'paper')
   } else {
-    return (randomNumber = 'paper')
+    return 'ERROR'
   }
 }
 
-function playRound(playerSelection, computerSelection) {
-  computerSelection = computerPlay()
+let playerSelection = ''
+const rockBtn = document.querySelector('#rock')
+const scissorsBtn = document.querySelector('#scissors')
+const paperBtn = document.querySelector('#paper')
+rockBtn.addEventListener('click', () => {
+  return (playerSelection = 'rock')
+})
+scissorsBtn.addEventListener('click', () => {
+  return (playerSelection = 'scissors')
+})
+paperBtn.addEventListener('click', () => {
+  return (playerSelection = 'paper')
+})
 
-  playerSelection = prompt('Type: scissors, paper or rock').toLowerCase()
+function playRound() {
+  computerSelection = computerPlay()
 
   if (playerSelection === computerSelection) {
     console.log(`Draw!! ${playerSelection} tie with ${computerSelection}`)
   } else if (
+    // haha yandere dev go brr
     (playerSelection === 'rock' && computerSelection === 'paper') ||
     (playerSelection === 'scissors' && computerSelection === 'rock') ||
-    (playerSelection === 'paper' && computerSelection === 'rock')
+    (playerSelection === 'paper' && computerSelection === 'rock') ||
+    (playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'paper' && computerSelection === 'scissors')
   ) {
     return (
       console.log(`Lose!! ${playerSelection} lost to ${computerSelection}`),
       (computerScore = computerScore + 1)
     )
   } else if (playerSelection !== 'scissors' && 'rock' && 'paper') {
-    console.log(`${playerSelection} is not a valid type`)
+    console.log(`${playerSelection} is not a valid type ${computerSelection}`)
   } else {
     return (
       console.log(`Win!! ${playerSelection} beats ${computerSelection}`),
@@ -42,13 +61,15 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playRound()
-    console.log('random number:', generateRandomNumber())
-    console.log('Player Score:', playerScore)
-    console.log('Computer Score:', computerScore)
-  }
-}
-
-game()
+rockBtn.addEventListener('click', () => {
+  generateRandomNumber()
+  playRound()
+})
+scissorsBtn.addEventListener('click', () => {
+  generateRandomNumber()
+  playRound()
+})
+paperBtn.addEventListener('click', () => {
+  generateRandomNumber()
+  playRound()
+})

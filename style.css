@@ -1,0 +1,58 @@
+* {
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: none;
+
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins';
+}
+
+body {
+  background-color: #1b5d93;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roundTitle {
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.scoreContainer {
+  display: flex;
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  gap: 100px;
+  justify-content: space-between;
+}
+
+.choicesContainer {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  gap: 50px;
+}
+
+div svg {
+  height: 100px;
+  width: 100px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #5194d6;
+  transition: 0.3s ease-in;
+}
+
+button:hover {
+  background-color: red;
+}
