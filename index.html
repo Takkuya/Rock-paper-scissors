@@ -8,20 +8,25 @@
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
 
     <title>Rock Paper Scissors</title>
   </head>
   <body>
     <div class="container">
-      <div class="roundTitle">ROUND: 3</div>
+      <section id="header">JOKENPO</section>
+      <section>
+        <div id="roundTitle">ROUND: 0</div>
+      </section>
       <section class="scoreContainer">
-        <div>
-          <p>10</p>
-        </div>
-        <div>
-          <p>10</p>
-        </div>
+        <div id="playerScore">Player Score: 0</div>
+        <div id="computerScore">Computer Score: 0</div>
       </section>
       <section class="choicesContainer">
         <div>
@@ -76,6 +81,7 @@
           </button>
         </div>
       </section>
+      <section id="resultsContainer"><h1>Result:</h1></section>
     </div>
   </body>
   <script type="text/javascript" src="main.js"></script>
