@@ -33,7 +33,6 @@ function computerPlay() {
   }
 }
 
-// updating scores
 function updatePlayerScore(number) {
   playerScore = number
   playerScoreText.innerText = `Player Score: ${playerScore}`
@@ -128,4 +127,8 @@ paperBtn.addEventListener('click', () => {
   playerSelection = 'paper'
   generateRandomNumber()
   playRound()
+})
+
+resetBtn.addEventListener('click', () => {
+  location.reload()
 })

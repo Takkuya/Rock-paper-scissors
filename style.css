@@ -86,6 +86,12 @@ button:disabled {
   opacity: 40%;
 }
 
+#resetBtn {
+  font-size: 20px;
+  width: 134px;
+  color: #c8fcea;
+}
+
 #resultsContainer {
   padding: 20px;
   text-align: center;
