@@ -12,11 +12,14 @@
 
 body {
   background-color: #141414;
+  display: flex;
+  height: 100%;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 20px;
   align-items: center;
 }
@@ -38,6 +41,12 @@ body {
   color: #d3eaea;
 }
 
+#winnerContainer {
+  text-align: center;
+  font-size: 18px;
+  font-style: italic;
+}
+
 .scoreContainer {
   display: flex;
   justify-content: space-between;
@@ -50,7 +59,6 @@ body {
 .choicesContainer {
   display: flex;
   justify-content: center;
-  margin: auto;
   gap: 20px;
 }
 
@@ -79,11 +87,17 @@ button:disabled {
 }
 
 #resultsContainer {
+  padding: 20px;
   text-align: center;
   font-size: 18px;
+  flex: 0.3;
+  min-height: 101px;
+  height: 100%;
+  border-left: 5px solid #00c896;
 }
 
 #resultsContainer h1 {
   font-size: 30px;
   color: #c8fcea;
+  padding-bottom: 10px;
 }

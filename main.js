@@ -13,6 +13,9 @@ const playerScoreText = document.getElementById('playerScore')
 const computerScoreText = document.getElementById('computerScore')
 const roundScoreText = document.getElementById('roundTitle')
 const resultsContainer = document.getElementById('resultsContainer')
+const winnerContainer = document.getElementById('winnerContainer')
+
+const winnerParagraph = document.createElement('p')
 
 function generateRandomNumber() {
   return (randomNumber = Math.floor(Math.random() * 3))
@@ -30,6 +33,7 @@ function computerPlay() {
   }
 }
 
+// updating scores
 function updatePlayerScore(number) {
   playerScore = number
   playerScoreText.innerText = `Player Score: ${playerScore}`
@@ -48,50 +52,67 @@ function updateRoundScore(number) {
   return roundScore
 }
 
+// deactivating all buttons
+function endGame() {
+  const btnArray = [rockBtn, scissorsBtn, paperBtn]
+  btnArray.forEach((item) => {
+    item.setAttribute('disabled', true)
+  })
+}
+
+function gameResult() {
+  if (playerScore === 5) {
+    winnerContainer.innerText = 'Congratulations, you won!!!!'
+    winnerContainer.appendChild(winnerParagraph)
+  } else if (computerScore === 5) {
+    winnerContainer.innerText = 'Unfortunately you lost :C'
+    winnerContainer.appendChild(winnerParagraph)
+  }
+}
+
 function playRound() {
   computerSelection = computerPlay()
   const paragraph = document.createElement('p')
 
-  if (playerSelection === computerSelection) {
-    paragraph.textContent = `Draw!! ${playerSelection} tie with ${computerSelection}`
-    return (
-      resultsContainer.appendChild(paragraph), updateRoundScore(roundScore + 1)
-    )
-  } else if (
-    // haha yandere dev go brr
-    (playerSelection === 'rock' && computerSelection === 'paper') ||
-    (playerSelection === 'scissors' && computerSelection === 'rock') ||
-    (playerSelection === 'paper' && computerSelection === 'scissors')
-  ) {
-    paragraph.textContent = `Lose!! ${playerSelection} lost  ${computerSelection} `
-    return (
-      updateComputerScore(computerScore + 1),
-      resultsContainer.appendChild(paragraph),
-      updateRoundScore(roundScore + 1)
-    )
-  } else if (
-    (playerSelection === 'rock' && computerSelection === 'scissors') ||
-    (playerSelection === 'scissors' && computerSelection === 'paper') ||
-    (playerSelection === 'paper' && computerSelection === 'rock')
-  ) {
-    paragraph.textContent = `Win!! ${playerSelection} beats ${computerSelection} `
-    return (
-      resultsContainer.appendChild(paragraph),
-      updatePlayerScore(playerScore + 1),
-      updateRoundScore(roundScore + 1)
-    )
+  if (playerScore === 5 || computerScore === 5) {
+    return gameResult(), endGame()
   } else {
-    return console.log(
-      `${playerSelection} is not a valid type ${computerSelection}`
-    )
+    if (playerSelection === computerSelection) {
+      paragraph.textContent = `Draw!! ${playerSelection} tie with ${computerSelection}`
+      return (
+        resultsContainer.appendChild(paragraph),
+        updateRoundScore(roundScore + 1)
+      )
+    } else if (
+      // haha yandere dev go brr
+      (playerSelection === 'rock' && computerSelection === 'paper') ||
+      (playerSelection === 'scissors' && computerSelection === 'rock') ||
+      (playerSelection === 'paper' && computerSelection === 'scissors')
+    ) {
+      paragraph.textContent = `Lose!! ${playerSelection} lost  ${computerSelection} `
+      return (
+        updateComputerScore(computerScore + 1),
+        resultsContainer.appendChild(paragraph),
+        updateRoundScore(roundScore + 1)
+      )
+    } else if (
+      (playerSelection === 'rock' && computerSelection === 'scissors') ||
+      (playerSelection === 'scissors' && computerSelection === 'paper') ||
+      (playerSelection === 'paper' && computerSelection === 'rock')
+    ) {
+      paragraph.textContent = `Win!! ${playerSelection} beats ${computerSelection} `
+      return (
+        resultsContainer.appendChild(paragraph),
+        updatePlayerScore(playerScore + 1),
+        updateRoundScore(roundScore + 1)
+      )
+    } else {
+      return console.log(
+        `${playerSelection} is not a valid type ${computerSelection}`
+      )
+    }
   }
 }
-
-// deactivating all buttons
-// const btnArray = [rockBtn, scissorsBtn, paperBtn]
-// btnArray.forEach((item) => {
-//   item.setAttribute('disabled', true)
-// })
 
 rockBtn.addEventListener('click', () => {
   playerSelection = 'rock'
